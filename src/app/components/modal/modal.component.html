@@ -1,0 +1,11 @@
+<div class="wrapper" *ngIf="isVisible">
+  <div class="modal">
+    <div class="header">
+      <p class="title">Rules</p>
+      <button (click)="onClose()">
+        <app-svg-icon [icon]="'close'"></app-svg-icon>
+      </button>
+    </div>
+    <app-svg-icon [icon]="'rules'"></app-svg-icon>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="header">
+  <app-svg-icon [icon]="'logo'"></app-svg-icon>
+  <div class="score">
+    <p>score</p>
+    <p class="count">{{ score }}</p>
+  </div>
+</div>
+<div class="select" *ngIf="!isSelected">
+  <button class="item paper" (click)="onSelectItem(items[1])">
+    <app-svg-icon [icon]="'paper'"></app-svg-icon>
+  </button>
+
+  <button class="item rock" (click)="onSelectItem(items[0])">
+    <app-svg-icon [icon]="'rock'"></app-svg-icon>
+  </button>
+
+  <button class="item scissors" (click)="onSelectItem(items[2])">
+    <app-svg-icon [icon]="'scissors'"></app-svg-icon>
+  </button>
+
+  <app-svg-icon class="background" [icon]="'triangle'"></app-svg-icon>
+</div>
+<div class="game" *ngIf="isSelected">
+  <div class="player">
+    <p class="title">You picked</p>
+    <ng-container *ngIf="selectedItem1">
+      <button
+        class="item"
+        [ngClass]="[selectedItem1, winner === selectedItem1 ? 'winner' : '']"
+      >
+        <app-svg-icon [icon]="selectedItem1"></app-svg-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!selectedItem1">
+      <div class="placeholder"></div>
+    </ng-container>
+  </div>
+
+  <div class="result">
+    <p *ngIf="winner">You {{ winner === selectedItem1 ? "win" : "lose" }}</p>
+    <p *ngIf="!winner">It's a draw</p>
+    <button (click)="onClick()">Play again</button>
+  </div>
+
+  <div class="player">
+    <p class="title">The house picked</p>
+    <ng-container *ngIf="selectedItem2">
+      <button
+        class="item"
+        [ngClass]="[selectedItem2, winner === selectedItem2 ? 'winner' : '']"
+      >
+        <app-svg-icon [icon]="selectedItem2"></app-svg-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!selectedItem2">
+      <div class="placeholder"></div>
+    </ng-container>
+  </div>
+</div>

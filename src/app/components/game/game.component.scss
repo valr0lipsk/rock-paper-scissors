@@ -1,0 +1,223 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 100%;
+
+  .score {
+    background-color: white;
+    color: var(--score-text);
+    padding: 15px 40px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    letter-spacing: 1.2pt;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    p {
+      margin: 0;
+    }
+
+    .count {
+      color: var(--dark-text);
+      letter-spacing: 1.1pt;
+      font-weight: 700;
+      text-align: center;
+      font-size: 50px;
+      margin: 0;
+    }
+  }
+}
+
+button.item {
+  border-radius: 50%;
+  border: 20px solid;
+  box-sizing: content-box;
+  outline: none;
+  background-color: white;
+  transition: all 0.05s ease-in;
+
+  &.scissors {
+    border-color: hsl(40, 84%, 53%);
+    box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+      0px 7px 0px -1px hsl(39, 93%, 42%);
+  }
+
+  &.paper {
+    border-color: hsl(230, 89%, 65%);
+    box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+      0px 7px 0px -1px hsl(230, 93%, 58%);
+  }
+
+  &.rock {
+    border-color: hsl(349, 70%, 56%);
+    box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+      0px 7px 0px -1px hsl(349, 75%, 49%);
+  }
+}
+
+.select {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  .background {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    z-index: -99;
+  }
+
+  button.item {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+
+    &.scissors {
+      top: 15%;
+      right: 15%;
+    }
+
+    &.paper {
+      top: 15%;
+      left: 25%;
+    }
+
+    &.rock {
+      bottom: 0%;
+      left: 45%;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+      box-shadow: none;
+    }
+  }
+}
+
+.game {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  //   position: relative;
+
+  button.item {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transition: box-shadow 0.7s ease-in;
+
+    &.winner {
+      &.scissors {
+        box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+          0px 7px 0px -1px hsl(39, 93%, 42%),
+          0px 0px 0px 30px hsla(217deg, 16%, 45%, 0.24),
+          0px 0px 0px 60px rgba(96, 110, 133, 0.13),
+          0px 0px 0px 90px rgba(96, 110, 133, 0.055);
+      }
+
+      &.paper {
+        box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+          0px 7px 0px -1px hsl(230, 93%, 58%),
+          0px 0px 0px 30px hsla(217deg, 16%, 45%, 0.24),
+          0px 0px 0px 60px rgba(96, 110, 133, 0.13),
+          0px 0px 0px 90px rgba(96, 110, 133, 0.055);
+      }
+
+      &.rock {
+        box-shadow: inset 0px 10px 0px -1px rgba(166, 154, 166, 0.5),
+          0px 7px 0px -1px hsl(349, 75%, 49%),
+          0px 0px 0px 30px hsla(217deg, 16%, 45%, 0.24),
+          0px 0px 0px 60px rgba(96, 110, 133, 0.13),
+          0px 0px 0px 90px rgba(96, 110, 133, 0.055);
+      }
+    }
+  }
+
+  .player {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-family: var(--font-family);
+      text-transform: uppercase;
+      margin: 0;
+      color: white;
+      font-weight: 600;
+      font-size: 25px;
+      letter-spacing: 1.2pt;
+    }
+  }
+
+  .placeholder {
+    width: 170px;
+    height: 170px;
+    background-color: hsl(237, 49%, 15%);
+    border-radius: 50%;
+    margin-bottom: 35px;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: white;
+      font-family: var(--font-family);
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 1.2pt;
+      margin: 0;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 150px;
+      height: 40px;
+      background-color: white;
+      outline: none;
+      border: 1px solid white;
+      border-radius: 8px;
+      color: red;
+      text-transform: uppercase;
+      font-family: var(--font-family);
+      font-weight: 600;
+      letter-spacing: 1.5pt;
+      font-size: 14px;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+}
